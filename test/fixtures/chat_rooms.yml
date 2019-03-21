@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ruby_chat_room:
+  title: Ruby
+  description: Sala de chat para hablar sobre Ruby
+
+rails_chat_room:
+  title: Rails
+  description: Sala de chat para hablar sobre Rails
+
+vuejs_chat_room:
+  title: Vuejs
+  description: Sala de chat para hablar sobre VueJS
