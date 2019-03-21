@@ -18,8 +18,8 @@
 
       <div class="col-sm align-self-center">
         <div class="card bg-blue h-100">
-            <% text = "ActionCable.server.broadcast \"conversation_\#{conversation.id}_channel\",
-  message: renderer.render(partial: 'conversations/messages/message', locals: { message: message })" %>
+            <% text = "ActionCable.server.broadcast \"chat_room_\#{@message.chat_room.id}_channel\",
+message: renderer.render(partial: 'messages/incoming_message', locals: { message: @message })" %>
             <%= syntax_highlight(text) %>
         </div>
       </div>

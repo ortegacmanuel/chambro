@@ -18,9 +18,9 @@
 
       <div class="col-sm align-self-center">
         <div class="card bg-blue h-100">
-          <% text = "class ConversationChannel < ApplicationCable::Channel
+          <% text = "class ChatRoomChannel < ApplicationCable::Channel
   def subscribed
-    stream_from \"conversation_#{params['conversation_id']}_channel\"
+    stream_from \"chat_room_\#{params['chat_room_id']}_channel\"
   end
 
   def unsubscribed
