@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  include ApplicationHelper
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
   # GET /messages
@@ -28,6 +29,12 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
+        renderer = MessagesController.renderer.new(
+          http_host: base_host,
+        )
+        ActionCable.server.broadcast "chat_room_#{@message.chat_room.id}_channel",
+          message: renderer.render(partial: 'messages/incoming_message', locals: { message: @message })
+
         format.html { redirect_to chat_room_path(@message.chat_room) }
         format.json { render :show, status: :created, location: @message }
       else

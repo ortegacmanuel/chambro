@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="mesgs">
-          <div class="msg_history">
+          <div class="msg_history" id="messages" data-chat-room-id="<%= @chat_room.id %>">
             <% @chat_room.messages.each do |message| %>
               <% if message.user_id == current_user.id %>
                 <div class="outgoing_msg">
@@ -37,14 +37,7 @@
                     <span class="time_date"><%= message.created_at %></span> </div>
                 </div>
               <% else %>
-                <div class="incoming_msg">
-                  <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                  <div class="received_msg">
-                    <div class="received_withd_msg">
-                      <p><%= message.body %></p>
-                      <span class="time_date"><%= message.created_at %></span> </div>
-                  </div>
-                </div>
+                <%= render "messages/incoming_message", message: message %>
               <% end %>
             <% end %>
             <div id='bottom-of-messages-thread' class='pt-2'></div>
