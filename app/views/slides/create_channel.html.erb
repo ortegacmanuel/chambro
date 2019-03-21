@@ -1,0 +1,35 @@
+<div class="bg-light fullheight">
+  <div class="container">
+    <div class="d-flex w-100 justify-content-between pt-3">
+      <%= link_to material_icon.navigate_before.md_36, slides_demo_path %>
+      <%= link_to material_icon.exit_to_app.md_36, root_path %>
+      <%= link_to material_icon.navigate_next.md_36, slides_subscribe_channel_path %>
+    </div>
+    <div class="row cover py-3 py-sm-5">
+
+      <div class="col-sm pb-2">
+        <div class="card bg-blue h-100">
+          <div class="my-auto p-3">
+            <span class="badge badge-light">5 de 9</span>
+            <h2><small>Creating a channel</small></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm align-self-center">
+        <div class="card bg-blue h-100">
+          <% text = "class ConversationChannel < ApplicationCable::Channel
+  def subscribed
+    stream_from \"conversation_#{params['conversation_id']}_channel\"
+  end
+
+  def unsubscribed
+    # Any cleanup needed when channel is unsubscribed
+  end
+end" %>
+          <%= syntax_highlight(text) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
